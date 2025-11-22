@@ -65,7 +65,6 @@ def toggle_bookmark(request, word_id):
     
     return redirect(base_url + query_string)
 
-#내가 수정
 @login_required
 def bookmark_list(request):
     '''
@@ -87,10 +86,8 @@ def bookmark_list(request):
     else: # recent (기본값)
         bookmarks = bookmarks.order_by('-id')
 
-    # 3. 단어 객체 리스트 추출
     words = [bookmark.word for bookmark in bookmarks]
-    
-    # 4. [핵심] 자바스크립트 전달용 데이터 구성
+   
     words_data = []
     for word in words:
         words_data.append({
